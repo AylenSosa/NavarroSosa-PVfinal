@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Registrar Estudiante</title>
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.0/css/bootstrap.min.css}" />
+</head>
+<body>
+    <div th:replace="~{layout :: header}"></div>
+
+    <div class="container col-lg-6 mx-auto p-4 rounded-5 bg-secondary bg-opacity-10">
+
+    	<h4>Registrar Nuevo Estudiante</h4>
+
+        <form th:object="${nuevoAlumno}" th:action="${band}?@{/modificarAlumno}:@{/guardarAlumno}" method="post">
+            <div class="row g-3">
+                <input type="hidden" class="form-control" th:if="${band}" th:field="*{id_Alumno}">
+        				
+                <div class="col-md-6">
+                    <label class="form-label" for="fnombre">Nombre</label>
+                    <input type="text" class="form-control" id="nombreID" title="Ingresa un nombre valido, sin números o caracteres especiales." pattern="[A-Za-z\s]+" th:field="*{nombre}" required>
+        		 </div>
+                
+                <div class="col-md-6">
+                    <label class="form-label" for="fapellido">Apellido</label>
+                    <input type="text" th:field="*{apellido}" class="form-control" required/>
+                </div>
+                
+                <div class="col-md-5">
+                    <label class="form-label" for="fdni">DNI</label>
+             		<input type="number" class="form-control" id="dniID" th:field="*{dni}" min="10000000" max="99999999" title="Ingresa un número de 8 digitos." required>
+        		 </div>
+                
+                <div class="col-md-5">
+                    <label class="form-label" for="ftelefono">Número de Télefono</label>
+                    <input type="tel" class="form-control" id="telID" th:field="*{telefono}" pattern="\d{10}" title="Ingresa un número de 10 dígitos." required>		    
+        		</div>
+                
+                <div class="col-md-12">
+                    <label class="form-label" for="fdireccion">Dirección</label>
+                    <input type="text" th:field="*{direccion}" class="form-control" required>
+                </div>
+                
+                <div class="col-md-4">
+                    <label class="form-label" for="fcorreo">Correo</label>
+                    <input type="email" th:field="*{correo}" class="form-control" required>
+                </div>
+                
+                <div class="col-md-4">
+                    <label class="form-label" for="fcurso">Curso</label>
+                    <select th:field="*{curso}" class="form-control" required>
+                        <option th:value="1">Primer Año</option>
+                        <option th:value="2">Segundo Año</option>
+                        <option th:value="3">Tercer Año</option>
+                        <option th:value="4">Cuarto Año</option>
+                        <option th:value="5">Quinto Año</option>
+                    </select>
+                </div>
+                
+                <div class="col-md-4">
+                    <label class="form-label">División</label><br>
+                    <div th:each="opcion : ${listaDivisiones}" class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" th:id="'opcion' + ${opcion}" th:name="division" th:field="*{division}" th:value="${opcion}" required>
+                      <label class="form-check-label" th:for="'opcion' + ${opcion}" th:text="${opcion}"></label>
+                    </div>
+                </div>
+                <div class="mb-e">
+                    <button type="submit" class="btn btn-success rounded-pill">Registrar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+</html></html>

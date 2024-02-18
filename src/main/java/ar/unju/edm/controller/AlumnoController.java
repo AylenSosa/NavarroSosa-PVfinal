@@ -40,7 +40,7 @@ public class AlumnoController {
 		 cargaAlumno.addObject("listaDivisiones", divisiones);
 		 
 		 cargaAlumno.addObject("band", false);
-		 GRUPO6.warn("Cargando nuevo Alumno");
+
 		return cargaAlumno;
 	}
 	
@@ -72,8 +72,7 @@ public class AlumnoController {
 		}
 		
 		ModelAndView listadoAlumnos = new ModelAndView("listaDeAlumnos");
-		
-			GRUPO6.warn("Mostrando nuevo Alumno"+nAlumno.getNombre());
+		GRUPO6.warn("Mostrando nuevo Alumno"+nAlumno.getNombre());
 		
 		try {
 			GRUPO6.warn("Guardando Alumno");
@@ -112,7 +111,7 @@ public class AlumnoController {
 	
 	@PostMapping("/modificarAlumno")
 	public ModelAndView modificarEstudiante(@ModelAttribute("nuevoAlumno") Alumno unAlumno ) {
-		ModelAndView listadoEditado = new ModelAndView("mostrarEstudiantes");
+		ModelAndView listadoEditado = new ModelAndView("listaDeAlumnos");
 		
 			GRUPO6.warn("Mostrando Alumno modificado: "+unAlumno.getDni());
 		

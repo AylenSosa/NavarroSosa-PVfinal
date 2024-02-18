@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<body>
+	<nav th:fragment="header" class="navbar navbar-expand-lg bg-primary sticky-top mb-3">
+	  <div class="container-fluid">
+	    <a class="navbar-brand" th:href="@{/principal}">
+	      LOGO
+	    </a>
+	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+	    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+	      <ul class="navbar-nav ms-auto">
+			<li class="nav-item">
+	          <a class="nav-link" th:href="@{/listadoCuestionarios}">Listado de Cuestionarios</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" th:href="@{/listadoDocente}">Docentes</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" th:href="@{/listaDeAlumnos}">Alumnos</a>
+	        </li>
+	      </ul>
+	      <a class="btn btn-secondary"  th:href="@{/logout}">Cerrar Sesión</a>
+	    </div>
+	  </div>
+	</nav>
+	
+	<nav th:fragment="header-index" class="navbar navbar-expand-lg bg-primary sticky-top mb-3">
+	  <div class="container-fluid">
+	    <a class="navbar-brand" th:href="@{/index}">
+	      Logo
+	    </a>
+	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+	    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+	    </div>
+	  </div>
+	</nav>
+	
+	
+</body>
+</html>

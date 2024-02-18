@@ -25,12 +25,12 @@ public class ConfiguracionWeb extends WebSecurityConfigurerAdapter {
 		http
 		    .authorizeRequests()
 		    .antMatchers(resources).permitAll()
-		    .antMatchers("/","index","/login","/home","/elegirCuestionario","/resolverCuestionario/{id_Cuestionario}","/resultadoDeCuestionario/{id_Cuestionario}","/cuestionariosRealizados","/listaDeAlumnos","/listaDeDocentes","/docente/{id}").permitAll()
+		    .antMatchers("/","index","/login","/home","/elegirCuestionario","/resolverCuestionario/{id_Cuestionario}","/resultadoDeCuestionario/{id_Cuestionario}","/cuestionariosRealizados").permitAll()
 		    
 		    //saquen de comentarios este para que puedan crear un docente con contraseña y luego dejen el que estaba
-		    .antMatchers("/","index","/docente","/guardarDocente","/login","/home","/elegirCuestionario","/resolverCuestionario/{id_Cuestionario}","/resultadoDeCuestionario/{id_Cuestionario}","/cuestionariosRealizados","/listaDeAlumnos","/listaDeDocentes").permitAll()
+		    .antMatchers("/","index","/docente","/guardarDocente","/login","/home","/listaDeAlumnos","/listaDeDocentes").hasAuthority("ADMIN")
 		    //.antMatchers("/**").hasAuthority("ADMIN")
-		    .antMatchers("/","index","/login","/home","/cuestionario","/guardarCuestionario","/listadoCuestionarios","/cuestionarioConPreguntas/{id_Cuestionario}","/cuestionarioPregunta/{id_Cuestionario}","/guardarCuestionarioPregunta/{id_Cuestionario}","/elegirCuestionario","/resolverCuestionario/{id_Cuestionario}","/resultadoDeCuestionario/{id_Cuestionario}","/cuestionariosRealizados","/pregunta","/guardarPregunta","/eliminarPregunta/{idPregunta}","/modificarPregunta/{idPregunta}","/alumno","/listadoAlumno","/guardarAlumno","/modificarAlumno/{id_Alumno}","/modificarAlumno","/eliminarAlumno/{id_Alumno}","/docente","/listadoDocente","/guardarDocente","/modificarDocente/{id_Docente}","/modificarDocente","/eliminarDocente/{id_Docente}").permitAll()
+		    .antMatchers("/","index","/login","/home","/cuestionario","/guardarCuestionario","/listadoCuestionarios","/cuestionarioConPreguntas/{id_Cuestionario}","/cuestionarioPregunta/{id_Cuestionario}","/guardarCuestionarioPregunta/{id_Cuestionario}","/pregunta","/guardarPregunta","/eliminarPregunta/{idPregunta}","/modificarPregunta/{idPregunta}","/alumno","/listadoAlumno","/guardarAlumno","/modificarAlumno/{id_Alumno}","/modificarAlumno","/eliminarAlumno/{id_Alumno}","/docente","/listadoDocente","/guardarDocente","/modificarDocente/{dni}","/modificarDocente","/eliminarDocente/{dni}").hasAuthority("ADMIN")
 		    .anyRequest().authenticated()
 		    .and()
 		    .formLogin()
@@ -38,7 +38,7 @@ public class ConfiguracionWeb extends WebSecurityConfigurerAdapter {
 		    	.permitAll()
 		    	.successHandler(autenticacion)
 		    	.failureUrl("/login?error=true")
-		    	.usernameParameter("id_Docente")
+		    	.usernameParameter("dni")
 		    	.passwordParameter("contrasenia")
 		    	.and()
 		    	.csrf().disable()

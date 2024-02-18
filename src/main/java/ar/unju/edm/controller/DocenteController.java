@@ -107,8 +107,8 @@ public class DocenteController {
 	
 	//MODIFICAR 
 	
-	@GetMapping("/modificarDocente/{id_Docente}")
-	public ModelAndView modificarDocente(@PathVariable(name="id_Docente") Integer id) {
+	@GetMapping("/modificarDocente/{dni}")
+	public ModelAndView modificarDocente(@PathVariable(name="dni") Integer id) {
 		ModelAndView editarDocente = new ModelAndView("formularioDocente");
 		
 		try {
@@ -142,7 +142,7 @@ public class DocenteController {
 		
 		
 		try {
-			GRUPO6.warn("Docente modificado: " + docenteNuevo.getId_Docente());
+			GRUPO6.warn("Docente modificado: " + docenteNuevo.getDni());
 			unServicio.cargarDocente(docenteNuevo);
 		}catch(Exception e) {
 			listadoDocentes.addObject("cargaDocenteErrorMessage", e.getMessage());
@@ -156,8 +156,8 @@ public class DocenteController {
 	
 	//ELIMINAR
 	
-	@GetMapping("/eliminarDocente/{id_Docente}")
-	public ModelAndView eliminarDocente(@PathVariable(name="id_Docente") Integer id) {
+	@GetMapping("/eliminarDocente/{dni}")
+	public ModelAndView eliminarDocente(@PathVariable(name="dni") Integer id) {
 		ModelAndView eliminarDocente = new ModelAndView("mostrarDocentes");
 		
 		try {

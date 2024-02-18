@@ -56,7 +56,7 @@ public class ImpCuestionarioPreguntaService implements ICuestionarioPreguntaServ
 	@Override
 	public ArrayList<CuestionarioPregunta> mostrarTodosCuestionarioPregunta() {
 		// TODO Auto-generated method stub
-		return (ArrayList<CuestionarioPregunta>) cuestionarioPreguntaRepository.findAll();
+		return  (ArrayList<CuestionarioPregunta>) cuestionarioPreguntaRepository.findAll();
 	}
 
 	@Override
@@ -97,7 +97,7 @@ public class ImpCuestionarioPreguntaService implements ICuestionarioPreguntaServ
 	@Override
 	public List<Integer> ListadoDePuntajes(Integer id_Cuestionario) {
 		Cuestionario aux = cuestionarioRepository.findById(id_Cuestionario).get();
-        List<CuestionarioPregunta> cuestionarioPreguntas = cuestionarioPreguntaRepository.findAllByCuestionario(aux);
+    List<CuestionarioPregunta> cuestionarioPreguntas = cuestionarioPreguntaRepository.findAllByCuestionario(aux);
 		List<Integer> puntajes = new ArrayList<Integer>();
 		for(int i=0;i<cuestionarioPreguntas.size();i++) {
 			puntajes.add(cuestionarioPreguntas.get(i).getPuntaje());

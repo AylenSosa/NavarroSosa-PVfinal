@@ -9,17 +9,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.unju.edm.model.Docente;
 
+
 @Controller
 public class IndexController implements ErrorController  {
-	
-	@Autowired
-	Docente unDocente;
 	
 	private static final String PATH = "/error";
 	
 	@GetMapping({"/","/index","/home","/login"})
 	public ModelAndView cargarPrincipal(){
 		ModelAndView principal = new ModelAndView("index");
+		Docente unDocente=new Docente();
 		principal.addObject("docenteParaLoguear", unDocente);
 		
 		return principal;

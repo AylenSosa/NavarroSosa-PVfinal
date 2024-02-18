@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<title>Añadir Preguntas</title>
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.0/css/bootstrap.min.css}" />
+</head>
+<body>
+	<div th:replace="~{layout :: header}"></div>
+	<div class="container col-8">
+		<h3>Agregando Preguntas</h3>
+		<div class="container col-10">
+			<form id="miFormulario" th:action="@{'/guardarCuestionarioPregunta/' + ${id_Cuestionario}}" method="post">
+				<table class="table table-striped-columns">
+					<tr>
+						<th>Seleccionar</th>
+						<th>Puntaje</th>
+						<th>Pregunta</th>
+						<th>Opción Correcta</th>
+						<th>Dificultad</th>
+					</tr>
+					<tr th:each="pregunta : ${listadoPreguntas}">
+						<td>
+							<input type="checkbox" th:name="'preguntasSeleccionada'" th:value="${pregunta.idPregunta}">
+						</td>
+						<td>
+							<input type="number" th:name="'puntajesSeleccionados'" name="puntajesSeleccionados" min="0" max="100">
+						</td>
+						<td th:text="${pregunta.pregunta}"></td>
+						<td>
+					      <span th:switch="${pregunta.opcionCorrecta}">
+					        <span th:case="1">Primera Opción</span>
+					        <span th:case="2">Segunda Opción</span>
+					        <span th:case="3">Tercera Opción</span>
+					        <span th:case="4">Cuarta Opción</span>
+					      </span>
+						</td>
+						<td>
+					      <span th:switch="${pregunta.dificultad}">
+					        <span th:case="1">Fácil</span>
+					        <span th:case="2">Intermedio</span>
+					        <span th:case="3">Díficil</span>
+					        <span th:case="4">Imposible</span>
+					      </span>
+						</td>
+					</tr>
+				</table>
+				<button class="btn btn-primary" type="submit">Añadir preguntas</button>
+			</form>
+			<script>
+							
+			</script>
+		</div>
+	</div>
+	<script th:src="@{/webjars/bootstrap/5.3.0/js/bootstrap.min.js}"></script>
+</body>
+</html>
